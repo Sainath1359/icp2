@@ -1,0 +1,209 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMfjtGf+UWyqmKxGmdgKU6l",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Sainath1359/icp2/blob/icp3/icp3\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "#Lesson3"
+      ],
+      "metadata": {
+        "id": "RnEavZhzZNaZ"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 1. Question 1"
+      ],
+      "metadata": {
+        "id": "ARB_oSa7ZVTZ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "id": "48-2iYGvV9Jl"
+      },
+      "outputs": [],
+      "source": [
+        "class Employee():\n",
+        "  count = 0\n",
+        "  def __init__(self,name, family, salary, department):\n",
+        "    self.name = name\n",
+        "    self.family = family\n",
+        "    self.salary = salary\n",
+        "    self.department = department\n",
+        "    count += 1\n",
+        "\n",
+        "  def get_avg_salary(self):\n",
+        "    return self.salary/Employee.count\n",
+        "\n",
+        "class FulltimeEmployee(Employee):\n",
+        "  def __init__(name, family, salary, department):\n",
+        "    pass\n",
+        "    # Employee.name = name\n",
+        "    # Employee.family = family\n",
+        "    # Employee.salary = salary\n",
+        "    # Employee.department = department"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 2. Question 2"
+      ],
+      "metadata": {
+        "id": "4Ud2jyctZhv5"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np"
+      ],
+      "metadata": {
+        "id": "zwyGSnADZlIG"
+      },
+      "execution_count": 70,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "np_array = np.random.uniform(1,20,size=20)"
+      ],
+      "metadata": {
+        "id": "nFqXHEjuZoPt"
+      },
+      "execution_count": 91,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "np_array = np_array.reshape(4,5)"
+      ],
+      "metadata": {
+        "id": "gX3Tun2LZthP"
+      },
+      "execution_count": 92,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "max_elements = np_array.max(1).reshape(-1,1)"
+      ],
+      "metadata": {
+        "id": "wHK_WjtOe7JK"
+      },
+      "execution_count": 96,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# printing max elements\n",
+        "max_elements"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "aGJCPOmXnRKb",
+        "outputId": "c7838282-a2eb-4673-8365-61a35c06af34"
+      },
+      "execution_count": 106,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[18.54587059],\n",
+              "       [19.48206118],\n",
+              "       [19.30323468],\n",
+              "       [18.25373656]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 106
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "np_array[np_array == max_elements] = 1"
+      ],
+      "metadata": {
+        "id": "X5_EqPR3mIpa"
+      },
+      "execution_count": 107,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "np_array"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "9x1l3ds5mohe",
+        "outputId": "b3da90d2-57a2-4f63-eb2d-bd6617c23ad0"
+      },
+      "execution_count": 108,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[18.1266452 , 15.1474289 ,  9.61906171,  1.        ,  1.96899273],\n",
+              "       [16.76833505,  3.27830915,  1.        , 18.31171477,  5.39999916],\n",
+              "       [ 1.        ,  6.68293205, 18.39922995,  1.6111709 , 15.97467568],\n",
+              "       [14.48735504, 10.54257071,  1.        ,  4.53716988, 13.78909089]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 108
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "MrKyRpBanHU2"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
