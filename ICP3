@@ -1,0 +1,226 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyM+CNvovA3WvbyB4qCj4x3o",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Sainath1359/icp2/blob/icp3/ICP3\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "#Lesson3"
+      ],
+      "metadata": {
+        "id": "RnEavZhzZNaZ"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 1. Question 1"
+      ],
+      "metadata": {
+        "id": "ARB_oSa7ZVTZ"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 124,
+      "metadata": {
+        "id": "48-2iYGvV9Jl"
+      },
+      "outputs": [],
+      "source": [
+        "#created the Employee class\n",
+        "class Employee():\n",
+        "  # data member to count the number of employees\n",
+        "  count = 0\n",
+        "  total_salary = 0\n",
+        "  # constructor to initialize name, family, salary, department\n",
+        "  def __init__(self,name, family, salary, department):\n",
+        "    self.name = name\n",
+        "    self.family = family\n",
+        "    self.salary = salary\n",
+        "    self.department = department\n",
+        "    Employee.count += 1\n",
+        "    Employee.total_salary += self.salary\n",
+        "\n",
+        "  # function to average salary\n",
+        "  def get_avg_salary(self):\n",
+        "    return self.total_salary/Employee.count\n",
+        "\n",
+        "# class inherit the properties of Employee class\n",
+        "class FulltimeEmployee(Employee):\n",
+        "  def __init__(self,name, family, salary, department):\n",
+        "    super().__init__(name, family, salary, department)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# creating the instances using both classes\n",
+        "emp1 = FulltimeEmployee(\"Sai\",\"Kollu\",7000,\"CTO\")\n",
+        "emp2 = Employee(\"Sainath\",\"K\",9000,\"NLU\")"
+      ],
+      "metadata": {
+        "id": "3OH29W1-4fUd"
+      },
+      "execution_count": 125,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# printing the average of the salary\n",
+        "emp1.get_avg_salary()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "BBRoDtol45On",
+        "outputId": "938c6b43-6291-4728-a1e8-331db94048f0"
+      },
+      "execution_count": 126,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "8000.0"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 126
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### 2. Question 2"
+      ],
+      "metadata": {
+        "id": "4Ud2jyctZhv5"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "# create random vector of size 20 having only float in the range 1-20\n",
+        "np_array = np.random.uniform(1,20,size=20)\n",
+        "# reshape the array to 4 by 5\n",
+        "np_array = np_array.reshape(4,5)\n",
+        "# replace the max in each row by 0 (axis=1)\n",
+        "max_elements = np_array.max(1).reshape(-1,1)"
+      ],
+      "metadata": {
+        "id": "zwyGSnADZlIG"
+      },
+      "execution_count": 155,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# printing max elements\n",
+        "max_elements"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "aGJCPOmXnRKb",
+        "outputId": "8cfebd04-0416-478e-aca2-5d2e38c4dd66"
+      },
+      "execution_count": 156,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[18.0009342 ],\n",
+              "       [16.85032857],\n",
+              "       [18.32074051],\n",
+              "       [12.5331216 ]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 156
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "np_array[np_array == max_elements] = 0"
+      ],
+      "metadata": {
+        "id": "X5_EqPR3mIpa"
+      },
+      "execution_count": 157,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# printing final array\n",
+        "np_array"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "9x1l3ds5mohe",
+        "outputId": "551cb2cb-a703-4a45-8bc0-38ff1c76bf45"
+      },
+      "execution_count": 158,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([[14.81770421,  7.03176139,  5.88793419,  6.8052135 ,  0.        ],\n",
+              "       [ 7.32315575,  4.86459846, 10.74845552,  0.        ,  8.43618174],\n",
+              "       [ 1.88394387,  6.01827398, 17.51272408, 10.48083363,  0.        ],\n",
+              "       [ 5.88785919, 10.2845863 ,  4.94860481,  2.38157157,  0.        ]])"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 158
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "W9x8cyPV8dpk"
+      },
+      "execution_count": 158,
+      "outputs": []
+    }
+  ]
+}
